@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Bueno - Food Blog HTML Template</title>
+    <title>Online Foodcare</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -240,6 +240,12 @@
                                     </div>
                                     <p>abedurrahman487248@gmail.com</p>
                                 </div>
+                                <div class="col-12 col-lg-8">
+                                    <!-- ##### Google Maps ##### -->
+                                    <div class="map-area">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22236.40558254599!2d-118.25292394686001!3d34.057682914027104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z4Kay4Ka4IOCmj-CmnuCnjeCmnOCnh-CmsuCnh-CmuCwg4KaV4KeN4Kav4Ka-4Kay4Ka_4Kar4KeL4Kaw4KeN4Kao4Ka_4Kav4Ka84Ka-LCDgpq7gpr7gprDgp43gppXgpr_gpqgg4Kav4KeB4KaV4KeN4Kak4Kaw4Ka-4Ka34KeN4Kaf4KeN4Kaw!5e0!3m2!1sbn!2sbd!4v1532328708137" allowfullscreen></iframe>
+                                    </div>
+                                </div>
                             </div>
                             
                         </div>
@@ -248,73 +254,44 @@
                         <div class="contact-form-area mb-70">
                             <h4 class="mb-50">Get In Touch</h4>
 
-                            <form action="#" method="post">
+                            <form action="#" method="post" id="comment-form">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="name" placeholder="Name">
+                                            <input type="text" class="form-control" id="comment-name" placeholder="Name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="E-mail">
+                                            <input type="email" class="form-control" id="comment-email" placeholder="E-mail">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                            <textarea name="message" class="form-control" id="comment-message" cols="30" rows="10" placeholder="Message"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn bueno-btn mt-30"  type="submit" id="btnSubmitComment">Send</button>
+                                        <button class="btn bueno-btn mt-30"  type="button" onclick="func_comment();return false;"  id="sub">Send</button>
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                        <div>
+
+                            <ul id="comment-list">
+                                <li> <h4>Abed:</h4>
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A obcaecati at atque odit cumque libero officia aliquam recusandae. Ducimus maxime quibusdam, beatae eveniet cumque nostrum soluta aut reiciendis sint tenetur.</p></li>
+                            </ul>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database .js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    var firebaseConfig = {
-        apiKey: "AIzaSyAxdS4E-u9JRcebPldvRg5Dee3U8a_7jLI",
-        authDomain: "comments-14644.firebaseapp.com",
-        databaseURL: "https://comments-14644.firebaseio.com",
-        projectId: "comments-14644",
-        storageBucket: "comments-14644.appspot.com",
-        messagingSenderId: "37599606300",
-        appId: "1:37599606300:web:b2fd97ebf3192ee0c011d9",
-        measurementId: "G-8JP4J5RBPW"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
 
-    const rootRef=firebase.database().ref();
-    const commentsRef=rootRef.child('Comments');
-    document.getElementById("btnSubmitComment").addEventListener("click",function())({
 
-        var newcomment= document.getElementById("message").value.replace(/\n/g,"<br>"),
-        var newPostRef=commentsRef.push(),
-        newPostRef.set({
-            name: document.getElementById('tbName').value.trim(),
-            Comment: newcomment.trim(),
-            frompage: location.pathname,
-            when: firebase.database.ServerValue.TIMESTAMP
-        });
-    });
-
-</script>
 
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
                     <div class="sidebar-area">
@@ -537,6 +514,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="js/comment.js"></script>
 </body>
 
 </html>
